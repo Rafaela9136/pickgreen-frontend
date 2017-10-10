@@ -26,6 +26,8 @@ export class DepositoComponent implements OnInit {
         }, error => {
           window.alert(error);
         });
+      } else {
+        window.alert('nem entrei no if');
       }
     }
   }
