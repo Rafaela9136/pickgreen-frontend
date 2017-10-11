@@ -1,5 +1,5 @@
 <div class="modal-dialog">
-  <div class="modal-content">
+  <div class="modal-content" id="mod">
     <div class="modal-header">
       <button type="button" class="close" (click)="close()">&times;</button>
       <h4 class="modal-title">{{ title }}</h4>
@@ -25,7 +25,7 @@
         <div class="form-group" [ngClass]="{ 'has-error' : !password.valid && password.touched }">
           <label for="senha" class="control-label col-sm-2" style="text-align: left">Senha:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="senha" name="password" required [ngModel]="user.password" #password="ngModel">
+            <input type="password" class="form-control" id="senha" name="password" required [ngModel]="user.password" #password="ngModel">
           </div>
         </div>
 
