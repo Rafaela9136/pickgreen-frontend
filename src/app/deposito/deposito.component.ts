@@ -27,6 +27,7 @@ export class DepositoComponent implements OnInit {
         this.deposit.status = 'validado';
         this.http.put('http://pick-green-api.herokuapp.com/depositApi/' + this.deposit._id, this.deposit).subscribe(response => {
           this.loading = false;
+          this.router.navigate(['/confirmar-deposito']);
           return window.alert('Depósito confirmado!');
         }, error => {
           this.loading = false;
