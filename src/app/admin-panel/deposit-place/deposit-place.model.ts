@@ -1,5 +1,6 @@
 export class DepositPlace {
   _id: number;
+  _material: number[];
   zipcode: string;
   state: string;
   city: string;

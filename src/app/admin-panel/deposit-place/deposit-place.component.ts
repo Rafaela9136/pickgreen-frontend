@@ -59,14 +59,16 @@ export class DepositPlaceComponent implements OnInit {
     const index = this.depositPlaces.indexOf(place);
 
     if (index !== -1) {
-      this.loading = true;
-      this.crudService.deleteById(this.route + place._id).subscribe(response => {
-        this.depositPlaces.splice(index, 1);
-        this.loading = false;
-      }, error => {
-        window.alert(error);
-        this.loading = false;
-      });
+      if (window.confirm('Você tem certeza?')) {
+         this.loading = true;
+         this.crudService.deleteById(this.route + place._id).subscribe(response => {
+           this.depositPlaces.splice(index, 1);
+           this.loading = false;
+         }, error => {
+           window.alert(error);
+           this.loading = false;
+         });
+       }
     }
   }
 

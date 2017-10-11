@@ -1,4 +1,5 @@
-#mod {
-	max-height: 95vh;
-    overflow-y: auto;
-}
+.modal-dialog {
+   max-height: 90vh;
+   overflow: scroll;
+   overflow-x: hidden;
+ }

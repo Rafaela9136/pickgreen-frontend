@@ -59,14 +59,16 @@ export class CollectorsComponent implements OnInit {
     const index = this.collectors.indexOf(collector);
 
     if (index !== -1) {
-      this.loading = true;
-      this.crudService.deleteById(this.route + collector._id).subscribe(response => {
-        this.collectors.splice(index, 1);
-        this.loading = false;
-      }, error => {
-        console.log(error.statusText);
-        this.loading = false;
-      });
+       if (window.confirm('Você tem certeza?')) {
+         this.loading = true;
+         this.crudService.deleteById(this.route + collector._id).subscribe(response => {
+           this.collectors.splice(index, 1);
+           this.loading = false;
+         }, error => {
+           console.log(error.statusText);
+           this.loading = false;
+         });
+       }
     }
   }
 

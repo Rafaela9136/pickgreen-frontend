@@ -60,14 +60,16 @@ export class UsersComponent implements OnInit {
   deleteUser(user: User) {
     const index = this.users.indexOf(user);
     if (index !== -1) {
-      this.loading = true;
-      this.crudService.deleteById(this.route + user._id).subscribe(response => {
-        this.users.splice(index, 1);
-        this.loading = false;
-      }, error => {
-        window.alert(error);
-        this.loading = false;
-      });
+      if (window.confirm('Você tem certeza?')) {
+         this.loading = true;
+         this.crudService.deleteById(this.route + user._id).subscribe(response => {
+          this.users.splice(index, 1);
+           this.loading = false;
+         }, error => {
+           window.alert(error);
+           this.loading = false;
+         });
+       }
     }
   }
 

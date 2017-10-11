@@ -60,14 +60,16 @@ export class EventsComponent implements OnInit {
     const index = this.events.indexOf(event);
 
     if (index !== -1) {
-      this.loading = true;
-      this.crudService.deleteById(this.eventsRoute + event._id).subscribe(response => {
-        this.events.splice(index, 1);
-        this.loading = false;
-      }, error => {
-        window.alert(error);
-        this.loading = false;
-      });
+      if (window.confirm('Você tem certeza?')) {
+         this.loading = true;
+         this.crudService.deleteById(this.eventsRoute + event._id).subscribe(response => {
+           this.events.splice(index, 1);
+           this.loading = false;
+         }, error => {
+           window.alert(error);
+           this.loading = false;
+         });
+       }
     }
   }
 

@@ -54,14 +54,16 @@ export class BraceletsComponent implements OnInit {
     const index: number = this.bracelets.indexOf(bracelet);
 
     if (index !== -1) {
-      this.loading = true;
-      this.crudService.deleteById(this.route + bracelet._id).subscribe(response => {
-        this.bracelets.splice(index, 1);
-        this.loading = false;
-      }, error => {
-        window.alert(error);
-        this.loading = false;
-      });
+      if (window.confirm('Você tem certeza?')) {
+         this.loading = true;
+         this.crudService.deleteById(this.route + bracelet._id).subscribe(response => {
+           this.bracelets.splice(index, 1);
+           this.loading = false;
+         }, error => {
+           window.alert(error);
+           this.loading = false;
+         });
+       }
     }
   }
 

@@ -13,23 +13,31 @@ export class DepositoComponent implements OnInit {
 
   deposit: Deposit = new Deposit();
   deposits: Deposit[] = [];
+  loading = false;
+  depositExists = false;
 
   constructor(private crudService: CrudService, private http: Http, private router: Router) { }
 
   onSubmit() {
-    for (let i = 0; i < this.deposits.length; i++) {
+    this.loading = true;
+    for (let i = 0; i < this.deposits.length; i++) {      
       if (this.deposits[i]._id === this.deposit._id) {
+        this.depositExists = true;
         this.deposit.status = 'validado';
-        this.http.put('http://pick-green-api.herokuapp.com/depositApi' + this.deposit._id, this.deposit).subscribe(response => {
-          window.alert('Depósito confirmado!');
-          this.router.navigate(['/confirmar-deposito']);
+        this.http.put('http://pick-green-api.herokuapp.com/depositApi/' + this.deposit._id, this.deposit).subscribe(response => {
+          this.loading = false;
+          return window.alert('Depósito confirmado!');
         }, error => {
-          window.alert(error);
+          this.loading = false;
+          return window.alert(error);
         });
-      } else {
-        window.alert('nem entrei no if');
       }
     }
+    if (!this.depositExists){
+      window.alert('Depósito inexistente');
+    }
+ 
+    this.loading = false;
   }
 
   loadDeposits() {
