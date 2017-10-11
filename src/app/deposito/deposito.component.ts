@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './deposito.component.html',
   styleUrls: ['./deposito.component.css']
 })
+
 export class DepositoComponent implements OnInit {
 
   deposit: Deposit = new Deposit();
@@ -18,7 +19,7 @@ export class DepositoComponent implements OnInit {
 
   constructor(private crudService: CrudService, private http: Http, private router: Router) { }
 
-  onSubmit() {
+  onSubmit(f) {
     this.loading = true;
     for (let i = 0; i < this.deposits.length; i++) {      
       if (this.deposits[i]._id === this.deposit._id) {
