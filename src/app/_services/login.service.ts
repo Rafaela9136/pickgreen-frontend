@@ -13,7 +13,7 @@ export class FinalUser {
 @Injectable()
 export class LoginService {
 
-  ApiUrl = 'http://pick-green-api.herokuapp.com/';
+  ApiUrl = 'https://pick-green-api.herokuapp.com/';
   admLogged = false;
   collectorLogged = false;
   showAdmMenu = false;
