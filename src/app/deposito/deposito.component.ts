@@ -25,7 +25,7 @@ export class DepositoComponent implements OnInit {
       if (this.deposits[i]._id === this.deposit._id) {
         this.depositExists = true;
         this.deposit.status = 'validado';
-        this.http.put('http://pick-green-api.herokuapp.com/depositApi/' + this.deposit._id, this.deposit).subscribe(response => {
+        this.http.put('https://pick-green-api.herokuapp.com/depositApi/' + this.deposit._id, this.deposit).subscribe(response => {
           this.loading = false;
           this.router.navigate(['/confirmar-deposito']);
           return window.alert('Depósito confirmado!');
