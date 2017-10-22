@@ -21,7 +21,7 @@ export class DepositPlaceComponent implements OnInit {
   createDepositPlace() {
     this.dialogService.addDialog(NewDepositPlaceComponent, {
       title: 'Novo local de depósito',
-      place: new DepositPlace(null, null, null, null, null, null, null, null)
+      place: new DepositPlace(null, null, null, null, null, null, null, null, null)
     }).subscribe((placeFromModal) => {
       if (typeof placeFromModal !== 'undefined') {
         this.loading = true;

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators } from '@angular/forms';
 
 import { DialogComponent, DialogService } from 'ng2-bootstrap-modal';
 import { User } from '../user.model';
