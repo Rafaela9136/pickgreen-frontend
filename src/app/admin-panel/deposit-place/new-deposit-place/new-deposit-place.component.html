@@ -11,63 +11,63 @@
         <div class="form-group" [ngClass]="{ 'has-error' : !nome.valid && nome.touched }">
           <label for="nome" class="control-label col-sm-2" style="text-align: left">Nome:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="nome" name="nome" [ngModel]="place.name" required #nome="ngModel">
+            <input type="text" class="form-control" id="nome" name="nome" maxlength="150" [ngModel]="place.name" required #nome="ngModel">
           </div>
         </div>
 
         <div class="form-group" [ngClass]="{ 'has-error' : !telefone.valid && telefone.touched }">
           <label for="telefone" class="control-label col-sm-2" style="text-align: left">Telefone:</label>
           <div class="col-sm-10">
-            <input type="tel" id="telefone" class="form-control" name="telefone" [ngModel]="place.phone" #telefone="ngModel" required>
+            <input type="tel" id="telefone" class="form-control" name="telefone" maxlength="30" [ngModel]="place.phone" #telefone="ngModel" required>
           </div>
         </div>
 
         <div class="form-group" [ngClass]="{ 'has-error' : !rua.valid && rua.touched }">
           <label for="rua" class="control-label col-sm-2" style="text-align: left">Rua:</label>
           <div class="col-sm-10">
-            <input type="text" id="rua" class="form-control" name="rua" [ngModel]="place.street" #rua="ngModel" required>
+            <input type="text" id="rua" class="form-control" name="rua" maxlength="150" [ngModel]="place.street" #rua="ngModel" required>
           </div>
         </div>
 
         <div class="form-group">
           <label for="complemento" class="control-label col-sm-2" style="text-align: left">Complemento:</label>
           <div class="col-sm-10">
-            <input type="text" id="complemento" class="form-control" name="complemento" ngModel>
+            <input type="text" id="complemento" class="form-control" name="complemento" maxlength="150" [ngModel]="place.complement" #complemento="ngModel">
           </div>
         </div>
 
         <div class="form-group" [ngClass]="{ 'has-error' : !numero.valid && numero.touched }">
           <label for="numero" class="control-label col-sm-2" style="text-align: left">Número:</label>
           <div class="col-sm-10">
-            <input type="number" id="numero" class="form-control" name="numero" [ngModel]="place.number" required #numero="ngModel">
+            <input type="text" id="numero" class="form-control" name="numero" pattern="[0-9]{5}" maxlength="5" [ngModel]="place.number" required #numero="ngModel">
           </div>
         </div>
 
         <div class="form-group" [ngClass]="{ 'has-error' : !bairro.valid && bairro.touched }">
           <label for="bairro" class="control-label col-sm-2" style="text-align: left">Bairro:</label>
           <div class="col-sm-10">
-            <input type="text" id="bairro" class="form-control" name="bairro" [ngModel]="place.neighborhood" required #bairro="ngModel">
+            <input type="text" id="bairro" class="form-control" name="bairro" maxlength="100" [ngModel]="place.neighborhood" required #bairro="ngModel">
           </div>
         </div>
 
         <div class="form-group" [ngClass]="{ 'has-error' : !cidade.valid && cidade.touched }">
           <label for="cidade" class="control-label col-sm-2" style="text-align: left">Cidade:</label>
           <div class="col-sm-10">
-            <input type="text" id="cidade" class="form-control" name="cidade" [ngModel]="place.city" required #cidade="ngModel">
+            <input type="text" id="cidade" class="form-control" name="cidade" maxlength="100" [ngModel]="place.city" required #cidade="ngModel">
           </div>
         </div>
 
         <div class="form-group" [ngClass]="{ 'has-error' : !estado.valid && estado.touched }">
           <label for="estado" class="control-label col-sm-2" style="text-align: left">Estado:</label>
           <div class="col-sm-10">
-            <input type="text" id="estado" class="form-control" name="estado" [ngModel]="place.state" required #estado="ngModel">
+            <input type="text" id="estado" class="form-control" name="estado" maxlength="100" [ngModel]="place.state" required #estado="ngModel">
           </div>
         </div>
 
         <div class="form-group" [ngClass]="{ 'has-error' : !cep.valid && cep.touched }">
           <label for="cep" class="control-label col-sm-2" style="text-align: left">CEP:</label>
           <div class="col-sm-10">
-            <input type="text" id="cep" class="form-control" name="cep" [ngModel]="place.zipcode" required #cep="ngModel">
+            <input type="text" id="cep" class="form-control" name="cep" maxlength="9" [ngModel]="place.zipcode" required #cep="ngModel">
           </div>
         </div>
 
@@ -84,7 +84,7 @@
 
         <div class="modal-footer">
           <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Ok</button>
-          <button type="button" class="btn btn-default" (click)="close()">Cancel</button>
+          <button type="button" class="btn btn-default" (click)="close()">Cancelar</button>
         </div>
 
       </form>

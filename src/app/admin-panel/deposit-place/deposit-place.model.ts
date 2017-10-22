@@ -7,6 +7,7 @@ export class DepositPlace {
   neighborhood: string;
   number: string;
   street: string;
+  complement: string;
   phone: string;
   name: string;
   geolocalization: {
@@ -14,11 +15,12 @@ export class DepositPlace {
     lng: string
   }
 
-  constructor(name: string, phone: string, street: string, number: string, neighborhood: string, city: string,
+  constructor(name: string, phone: string, street: string, complement: string, number: string, neighborhood: string, city: string,
               state: string, zipcode: string) {
     this.name = name;
     this.phone = phone;
     this.street = street;
+    this.complement = complement;
     this.number = number;
     this.neighborhood = neighborhood;
     this.city = city;
