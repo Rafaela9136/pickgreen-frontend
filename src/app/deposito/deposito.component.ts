@@ -23,11 +23,12 @@ export class DepositoComponent implements OnInit {
     this.loading = true;
     for (let i = 0; i < this.deposits.length; i++) {      
       if (this.deposits[i].code === this.deposit.code) {
-         window.alert(this.deposit.code);
-         window.alert(this.deposit[i]._id);
+        this.deposit._id = this.deposit[i]._id;
+        window.alert(this.deposit.code);
+        window.alert(this.deposit._id);
         this.depositExists = true;
         this.deposit.status = 'validado';
-        this.http.put('https://pick-green-api.herokuapp.com/depositApi/' + this.deposit[i]._id, this.deposit).subscribe(response => {
+        this.http.put('https://pick-green-api.herokuapp.com/depositApi/' + this.deposit._id, this.deposit).subscribe(response => {
           this.loading = false;
           this.router.navigate(['/confirmar-deposito']);
           return window.alert('Depósito confirmado!');
