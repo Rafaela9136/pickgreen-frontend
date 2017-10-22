@@ -22,7 +22,7 @@ export class DepositoComponent implements OnInit {
   onSubmit(f) {
     this.loading = true;
     for (let i = 0; i < this.deposits.length; i++) {      
-      if (this.deposits[i]._id === this.deposit._id) {
+      if (this.deposits[i].code === this.deposit.code) {
         this.depositExists = true;
         this.deposit.status = 'validado';
         this.http.put('https://pick-green-api.herokuapp.com/depositApi/' + this.deposit._id, this.deposit).subscribe(response => {
