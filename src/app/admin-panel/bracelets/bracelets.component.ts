@@ -39,7 +39,7 @@ export class BraceletsComponent implements OnInit {
       if (typeof braceletFromModal !== 'undefined') {
         const index = this.bracelets.indexOf(bracelet);
         this.loading = true;
-        this.crudService.update(this.route + bracelet._id, braceletFromModal, 'bracelet').subscribe(response => {
+        this.crudService.update(this.route + bracelet.code, braceletFromModal, 'bracelet').subscribe(response => {
           this.bracelets[index] = braceletFromModal;
           this.loading = false;
         }, error => {
@@ -56,7 +56,7 @@ export class BraceletsComponent implements OnInit {
     if (index !== -1) {
       if (window.confirm('Você tem certeza?')) {
          this.loading = true;
-         this.crudService.deleteById(this.route + bracelet._id).subscribe(response => {
+         this.crudService.deleteById(this.route + bracelet.code).subscribe(response => {
            this.bracelets.splice(index, 1);
            this.loading = false;
          }, error => {

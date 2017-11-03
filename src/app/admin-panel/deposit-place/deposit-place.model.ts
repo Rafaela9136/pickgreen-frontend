@@ -10,6 +10,7 @@ export class DepositPlace {
   complement: string;
   phone: string;
   name: string;
+  code: number;
   geolocalization: {
     lat: string,
     lng: string

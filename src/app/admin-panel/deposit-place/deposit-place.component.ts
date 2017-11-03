@@ -44,7 +44,7 @@ export class DepositPlaceComponent implements OnInit {
       if (typeof placeFromModal !== 'undefined') {
         const index = this.depositPlaces.indexOf(place);
         this.loading = true;
-        this.crudService.update(this.route + place._id, placeFromModal, 'depositPlace').subscribe(response => {
+        this.crudService.update(this.route + place.code, placeFromModal, 'depositPlace').subscribe(response => {
           this.depositPlaces[index] = placeFromModal;
           this.loading = false;
         }, error => {
@@ -61,7 +61,7 @@ export class DepositPlaceComponent implements OnInit {
     if (index !== -1) {
       if (window.confirm('Você tem certeza?')) {
          this.loading = true;
-         this.crudService.deleteById(this.route + place._id).subscribe(response => {
+         this.crudService.deleteById(this.route + place.code).subscribe(response => {
            this.depositPlaces.splice(index, 1);
            this.loading = false;
          }, error => {

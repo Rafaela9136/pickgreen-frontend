@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Deposit } from './deposit.model';
 import { CrudService } from '../_services/crud.service';
 import { Http } from '@angular/http';
-import { Router } from '@angular/router'; 
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-deposito',
@@ -16,19 +16,18 @@ export class DepositoComponent implements OnInit {
   deposits: Deposit[] = [];
   loading = false;
   depositExists = false;
+  currentUser = JSON.parse((window.sessionStorage.getItem('userCollector')));
 
   constructor(private crudService: CrudService, private http: Http, private router: Router) { }
 
-  onSubmit(f) {
+  onSubmit() {
     this.loading = true;
-    for (let i = 0; i < this.deposits.length; i++) {      
+    for (let i = 0; i < this.deposits.length; i++) {
       if (this.deposits[i].code === this.deposit.code) {
-        this.deposit._id = this.deposit[i]._id;
-        window.alert(this.deposit.code);
-        window.alert(this.deposit._id);
         this.depositExists = true;
         this.deposit.status = 'validado';
-        this.http.put('https://pick-green-api.herokuapp.com/depositApi/' + this.deposit._id, this.deposit).subscribe(response => {
+        this.deposit._collector = this.currentUser.pin;
+        this.http.put('https://pick-green-api.herokuapp.com/depositApi/' + this.deposit.code, this.deposit).subscribe(response => {
           this.loading = false;
           this.router.navigate(['/confirmar-deposito']);
           return window.alert('Depósito confirmado!');
@@ -38,10 +37,10 @@ export class DepositoComponent implements OnInit {
         });
       }
     }
-    if (!this.depositExists){
+    if (!this.depositExists) {
       window.alert('Depósito inexistente');
     }
- 
+
     this.loading = false;
   }
 
