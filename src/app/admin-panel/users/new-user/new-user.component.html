@@ -25,7 +25,7 @@
         <div class="form-group" [ngClass]="{ 'has-error' : !password.valid && password.touched }">
           <label for="senha" class="control-label col-sm-2" style="text-align: left">Senha:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="senha" name="password" required [ngModel]="user.password" maxlength="32" #password="ngModel">
+            <input type="password" class="form-control" id="senha" name="password" required [ngModel]="user.password" maxlength="60" #password="ngModel">
           </div>
         </div>
 
@@ -78,7 +78,7 @@
         <div class="form-group" [ngClass]="{ 'has-error' : !numero.valid && numero.touched }">
           <label for="numero" class="control-label col-sm-2" style="text-align: left">Número</label>
           <div class="col-sm-10">
-            <input type="text" id="numero" class="form-control" name="numero" required pattern="[0-9]{5}" maxlength="5" [ngModel]="user.number" #numero="ngModel">
+            <input type="text" id="numero" class="form-control" name="numero" required pattern="[0-9]{1,5}" maxlength="5" [ngModel]="user.number" #numero="ngModel">
           </div>
         </div>
 

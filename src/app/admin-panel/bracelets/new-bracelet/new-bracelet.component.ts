@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { DialogService, DialogComponent } from 'ng2-bootstrap-modal';
-import { Bracelet } from '../bracelet.model';
-import { User } from '../../users/user.model';
+import { Bracelet } from '../../../_models/bracelet.model';
+import { User } from '../../../_models/user.model';
 import { CrudService } from '../../../_services/crud.service';
 
 export interface NewBraceletModel {

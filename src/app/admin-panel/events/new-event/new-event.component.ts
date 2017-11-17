@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { DialogComponent, DialogService } from 'ng2-bootstrap-modal';
-import { Event } from '../event.model';
-import { DepositPlace } from '../../deposit-place/deposit-place.model';
+import { Event } from '../../../_models/event.model';
+import { DepositPlace } from '../../../_models/deposit-place.model';
 import { CrudService } from '../../../_services/crud.service';
 
 export interface EventModel {

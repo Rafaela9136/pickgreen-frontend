@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { NewDepositPlaceComponent } from './new-deposit-place/new-deposit-place.component';
 import { DialogService } from 'ng2-bootstrap-modal';
-import { DepositPlace } from './deposit-place.model';
+import { DepositPlace } from '../../_models/deposit-place.model';
 import { CrudService } from '../../_services/crud.service';
 
 @Component({

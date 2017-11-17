@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { NewUserComponent } from './new-user/new-user.component';
 import { DialogService } from 'ng2-bootstrap-modal';
-import { User } from './user.model';
+import { User } from '../../_models/user.model';
 import { CrudService } from '../../_services/crud.service';
 
 @Component({

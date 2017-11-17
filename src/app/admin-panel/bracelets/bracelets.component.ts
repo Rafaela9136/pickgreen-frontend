@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { NewBraceletComponent } from './new-bracelet/new-bracelet.component';
 import { DialogService } from 'ng2-bootstrap-modal';
-import { Bracelet } from './bracelet.model';
+import { Bracelet } from '../../_models/bracelet.model';
 import { CrudService } from '../../_services/crud.service';
 
 @Component({

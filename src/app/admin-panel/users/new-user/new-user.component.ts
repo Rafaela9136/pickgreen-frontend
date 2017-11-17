@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { DialogComponent, DialogService } from 'ng2-bootstrap-modal';
-import { User } from '../user.model';
+import { User } from '../../../_models/user.model';
 
 export interface ConfirmModel {
   title: string;

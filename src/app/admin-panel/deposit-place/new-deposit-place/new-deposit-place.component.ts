@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { DialogComponent, DialogService } from 'ng2-bootstrap-modal';
-import { DepositPlace } from '../deposit-place.model';
+import { DepositPlace } from '../../../_models/deposit-place.model';
 
 export interface NewDepositModel {
   title: string;

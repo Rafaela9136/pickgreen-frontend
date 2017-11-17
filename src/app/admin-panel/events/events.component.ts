@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { NewEventComponent } from './new-event/new-event.component';
 import { DialogService } from 'ng2-bootstrap-modal'
-import { Event } from './event.model';
+import { Event } from '../../_models/event.model';
 import { CrudService } from '../../_services/crud.service';
 
 @Component({

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { NewCollectorComponent } from './new-collector/new-collector.component';
 import { DialogService } from 'ng2-bootstrap-modal';
-import { Collector } from './collector.model';
+import { Collector } from '../../_models/collector.model';
 import { CrudService } from '../../_services/crud.service';
 
 @Component({

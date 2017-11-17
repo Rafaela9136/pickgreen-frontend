@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Deposit } from './deposit.model';
+import { Deposit } from '../_models/deposit.model';
 import { CrudService } from '../_services/crud.service';
 import { Http } from '@angular/http';
 import { Router } from '@angular/router';
