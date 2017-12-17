@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 
 export class DepositoComponent implements OnInit {
 
+  code: number;
   deposit: Deposit = new Deposit();
   deposits: Deposit[] = [];
   loading = false;
@@ -23,11 +24,10 @@ export class DepositoComponent implements OnInit {
   onSubmit() {
     this.loading = true;
     for (let i = 0; i < this.deposits.length; i++) {
-      if (this.deposits[i].code === this.deposit.code) {
+      if (this.deposits[i].code === this.code) {
         this.depositExists = true;
-        this.deposit.status = 'validado';
-        this.deposit._collector = this.currentUser.pin;
-        this.http.put('https://pick-green-api.herokuapp.com/depositApi/' + this.deposit.code, this.deposit).subscribe(response => {
+        this.deposit._collector = this.currentUser._id;
+        this.http.post('https://pick-green-api.herokuapp.com/depositApi/confirm/' + this.code, this.deposit).subscribe(response => {
           this.loading = false;
           this.router.navigate(['/confirmar-deposito']);
           return window.alert('Depósito confirmado!');
