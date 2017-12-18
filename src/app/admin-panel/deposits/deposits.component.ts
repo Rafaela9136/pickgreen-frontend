@@ -4,7 +4,6 @@ import { Deposit } from '../../_models/deposit.model';
 import { CrudService } from '../../_services/crud.service';
 import { DialogService } from 'ng2-bootstrap-modal';
 import {NewDepositComponent} from "./new-deposit/new-deposit.component";
-import {error} from "selenium-webdriver";
 
 @Component({
   selector: 'app-deposits',
