@@ -32,7 +32,7 @@
         <div class="form-group">
           <label for="dataCriacao" class="control-label col-sm-2" style="text-align: left">Data de criação:</label>
           <div class="col-sm-10">
-            <input type="text" id="dataCriacao" class="form-control" name="dataCriacao" maxlength="150" [ngModel]="deposit.created" #dataCriacao="ngModel">
+            <input type="text" id="dataCriacao" class="form-control" name="dataCriacao" maxlength="150" [ngModel]="formatDate(deposit.created)" #dataCriacao="ngModel">
           </div>
         </div>
 

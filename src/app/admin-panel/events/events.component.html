@@ -18,8 +18,8 @@
     <tbody>
     <tr *ngFor="let event of events">
       <td style="vertical-align: middle">{{ event.description }}</td>
-      <td style="vertical-align: middle">{{ event.created }}</td>
-      <td style="vertical-align: middle">{{ event.ended }}</td>
+      <td style="vertical-align: middle">{{ formatDate(event.created) }}</td>
+      <td style="vertical-align: middle">{{ formatDate(event.ended) }}</td>
       <td style="vertical-align: middle">
         <button class="btn btn-primary" (click)="updateEvent(event)" [disabled]="this.loading">Editar</button>
         <button class="btn btn-danger" (click)="deleteEvent(event)" [disabled]="this.loading">Remover</button></td>

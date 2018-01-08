@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { DialogComponent, DialogService } from 'ng2-bootstrap-modal';
 import { User } from '../../../_models/user.model';
+import { DateService } from '../../../_services/date.service';
 
 export interface ConfirmModel {
   title: string;
@@ -19,7 +20,7 @@ export class NewUserComponent extends DialogComponent<ConfirmModel, User> implem
   message: string;
   user: User;
 
-  constructor(dialogService: DialogService) {
+  constructor(dialogService: DialogService, private dateService: DateService) {
     super(dialogService);
   }
 
@@ -28,6 +29,12 @@ export class NewUserComponent extends DialogComponent<ConfirmModel, User> implem
       form.value.telefone, form.value.rua, form.value.complemento, form.value.numero, form.value.bairro, form.value.cidade,
       form.value.estado, form.value.cep);
     this.close();
+  }
+
+  formatDate(date) {
+    if (date != null) {
+      return this.dateService.toString(date);
+    }
   }
 
   ngOnInit() {

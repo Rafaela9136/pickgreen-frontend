@@ -4,6 +4,7 @@ import { NewEventComponent } from './new-event/new-event.component';
 import { DialogService } from 'ng2-bootstrap-modal'
 import { Event } from '../../_models/event.model';
 import { CrudService } from '../../_services/crud.service';
+import { DateService } from '../../_services/date.service';
 
 @Component({
   selector: 'app-events',
@@ -16,7 +17,7 @@ export class EventsComponent implements OnInit {
   eventsRoute = 'eventApi/';
   loading = false;
 
-  constructor(private dialogService: DialogService, private crudService: CrudService) {}
+  constructor(private dialogService: DialogService, private crudService: CrudService, private dateService: DateService) {}
 
   createEvent() {
     this.dialogService.addDialog(NewEventComponent, {
@@ -79,6 +80,10 @@ export class EventsComponent implements OnInit {
     }, error => {
       window.alert(error);
     });
+  }
+
+  formatDate(date) {
+    return this.dateService.toString(date);
   }
 
   ngOnInit() {

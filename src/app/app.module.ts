@@ -29,6 +29,7 @@ import { AdmAuthGuard } from './_guards/adm-auth.guard';
 import { CollectorAuthGuard } from './_guards/collector-auth.guard';
 import { DepositsComponent } from './admin-panel/deposits/deposits.component';
 import { NewDepositComponent } from './admin-panel/deposits/new-deposit/new-deposit.component';
+import { DateService } from './_services/date.service';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,7 @@ import { NewDepositComponent } from './admin-panel/deposits/new-deposit/new-depo
     NewBraceletComponent,
     NewDepositComponent
   ],
-  providers: [LoginService, CrudService, AdmAuthGuard, CollectorAuthGuard],
+  providers: [LoginService, CrudService, AdmAuthGuard, CollectorAuthGuard, DateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { DialogComponent, DialogService } from 'ng2-bootstrap-modal';
 import { Deposit } from '../../../_models/deposit.model';
+import { DateService } from '../../../_services/date.service';
 
 export interface NewDepositModel {
   title: string;
@@ -18,11 +19,19 @@ export class NewDepositComponent extends DialogComponent<NewDepositModel, Deposi
   title: string;
   deposit: Deposit;
 
-  constructor(dialogService: DialogService) {
+  constructor(dialogService: DialogService, private dateService: DateService) {
     super(dialogService);
   }
 
-  onSubmit() {};
+  onSubmit(form) {
+    this.result = new Deposit();
+  };
+
+  formatDate(date) {
+    if (date != null) {
+      return this.dateService.toString(date);
+    }
+  }
 
   ngOnInit() {
   }

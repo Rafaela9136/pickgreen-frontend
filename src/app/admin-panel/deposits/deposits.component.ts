@@ -3,8 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { Deposit } from '../../_models/deposit.model';
 import { CrudService } from '../../_services/crud.service';
 import { DialogService } from 'ng2-bootstrap-modal';
-import {NewDepositComponent} from "./new-deposit/new-deposit.component";
-import {error} from "selenium-webdriver";
+import { NewDepositComponent } from './new-deposit/new-deposit.component';
+import { DateService } from '../../_services/date.service';
+
 
 @Component({
   selector: 'app-deposits',
@@ -18,7 +19,7 @@ export class DepositsComponent implements OnInit {
   deposits: Deposit[] = [];
   route = 'depositApi/';
 
-  constructor(private dialogService: DialogService, private crudService: CrudService) { }
+  constructor(private dialogService: DialogService, private crudService: CrudService, private dateService: DateService) { }
 
   loadDeposits() {
     this.crudService.getAll(this.route).subscribe(users => {
@@ -61,6 +62,10 @@ export class DepositsComponent implements OnInit {
         });
       }
     }
+  }
+
+  formatDate(date) {
+    return this.dateService.toString(date);
   }
 
   ngOnInit() {
