@@ -6,7 +6,6 @@ import { DialogService } from 'ng2-bootstrap-modal';
 import { NewDepositComponent } from './new-deposit/new-deposit.component';
 import { DateService } from '../../_services/date.service';
 
-
 @Component({
   selector: 'app-deposits',
   templateUrl: './deposits.component.html',
