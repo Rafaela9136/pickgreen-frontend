@@ -13,13 +13,9 @@
           <label for="local" class="control-label col-sm-2" style="text-align: left">Local:</label>
           <div class="col-sm-10">
             <select name="local" id="local" class="form-control" [ngModel]="event._place" required #local="ngModel">
-              <option *ngFor="let place of places" value="{{ place._id }}">{{ place.name }}</option>
+              <option *ngFor="let place of places" value="{{ place.code }}">{{ place.name }}</option>
             </select>
           </div>
-        </div>
-
-        <div>
-
         </div>
 
         <div class="form-group" [ngClass]="{ 'has-error' : !descricao.valid && descricao.touched }">

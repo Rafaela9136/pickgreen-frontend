@@ -39,7 +39,7 @@
         <div class="form-group" [ngClass]="{ 'has-error' : !numero.valid && numero.touched }">
           <label for="numero" class="control-label col-sm-2" style="text-align: left">Número:</label>
           <div class="col-sm-10">
-            <input type="text" id="numero" class="form-control" name="numero" pattern="[0-9]{5}" maxlength="5" [ngModel]="place.number" required #numero="ngModel">
+            <input type="text" id="numero" class="form-control" name="numero" pattern="[0-9]{1,5}" maxlength="5" [ngModel]="place.number" required #numero="ngModel">
           </div>
         </div>
 
@@ -75,10 +75,33 @@
           <label class="control-label col-sm-2" style="text-align: left">Materiais aceitos:</label>
 
           <div class="col-sm-10">
-            <label class="checkbox-inline"><input type="checkbox" value="" name="plastico" ngModel>Plástico</label>
-            <label class="checkbox-inline"><input type="checkbox" value="" name="papel" ngModel>Papel</label>
-            <label class="checkbox-inline"><input type="checkbox" value="" name="vidro" ngModel>Vidro</label>
-            <label class="checkbox-inline"><input type="checkbox" value="" name="metal" ngModel>Metal</label>
+            <table class="table">
+              <thead>
+              <tr>
+                <th>Material</th>
+                <th></th>
+              </tr>
+              </thead>
+
+              <tbody>
+              <tr *ngFor="let material of place._material">
+                <td>{{ formatMaterial(material) }}</td>
+                <td><button (click)="removeMaterial(material)">Remover</button></td>
+              </tr>
+              </tbody>
+            </table>
+
+            <div class="btn-group" dropdown [dropup]="true">
+              <button class="btn btn-default dropdown-toggle" dropdownToggle="" type="button">Adicionar
+                <span class="caret"></span></button>
+              <ul *dropdownMenu class="dropdown-menu" role="menu">
+                <li role="menuitem"><a class="dropdown-item" (click)="addMaterial(1)">Papel</a></li>
+                <li role="menuitem"><a class="dropdown-item" (click)="addMaterial(2)">Vidro</a></li>
+                <li role="menuitem"><a class="dropdown-item" (click)="addMaterial(3)">Metal</a></li>
+                <li role="menuitem"><a class="dropdown-item" (click)="addMaterial(4)">Plástico</a></li>
+                <li role="menuitem"><a class="dropdown-item" (click)="addMaterial(8)">Tecido</a></li>
+              </ul>
+            </div>
           </div>
         </div>
 

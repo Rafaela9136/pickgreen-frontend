@@ -11,8 +11,8 @@
       <th>Id</th>
       <th>Nome</th>
       <th>Local</th>
-      <th>status</th>
-      <th>dataInicio</th>
+      <th>Status</th>
+      <th>Data de Criação</th>
       <th>Ações</th>
     </tr>
     </thead>
@@ -20,8 +20,8 @@
     <tbody>
     <tr *ngFor="let deposit of deposits">
       <td style="vertical-align: middle">{{ deposit._id }}</td>
-      <td style="vertical-align: middle">{{ deposit._user }}</td>
-      <td style="vertical-align: middle">{{ deposit._place }}</td>
+      <td style="vertical-align: middle">{{ findUser(deposit._user) }}</td>
+      <td style="vertical-align: middle">{{ findPlace(deposit._place) }}</td>
       <td style="vertical-align: middle">{{ deposit.status }}</td>
       <td style="vertical-align: middle">{{ formatDate(deposit.created) }}</td>
       <td>

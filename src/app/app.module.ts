@@ -30,6 +30,8 @@ import { CollectorAuthGuard } from './_guards/collector-auth.guard';
 import { DepositsComponent } from './admin-panel/deposits/deposits.component';
 import { NewDepositComponent } from './admin-panel/deposits/new-deposit/new-deposit.component';
 import { DateService } from './_services/date.service';
+import { AlertModule } from 'ngx-bootstrap';
+import { BsDropdownModule } from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
@@ -58,6 +60,8 @@ import { DateService } from './_services/date.service';
     CommonModule,
     FormsModule,
     HttpModule,
+    AlertModule.forRoot(),
+    BsDropdownModule.forRoot(),
     DateValueAccessorModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBb4zfxXZMu-1Mt-J8XdcsydsCyEkXcyX0'
