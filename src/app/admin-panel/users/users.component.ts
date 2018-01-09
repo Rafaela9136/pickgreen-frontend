@@ -24,7 +24,7 @@ export class UsersComponent implements OnInit {
     this.dialogService.addDialog(NewUserComponent, {
       title: 'Novo usuário',
       message: 'Confirm message',
-      user: new User(null, null, null, null, null, null, null, null, null, null, null, null, null, null)
+      user: new User(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null)
     }).subscribe((userFromModal) => {
       if (typeof userFromModal !== 'undefined') {
         this.loading = true;
