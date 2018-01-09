@@ -25,6 +25,7 @@ export class NewDepositPlaceComponent extends DialogComponent<NewDepositModel, D
   onSubmit(form) {
     this.result = new DepositPlace(form.value.nome, form.value.telefone, form.value.rua, form.value.complemento, form.value.numero,
        form.value.bairro, form.value.cidade, form.value.estado, form.value.cep, this.place._material);
+    this.close();
   }
 
   addMaterial(n) {
