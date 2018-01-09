@@ -15,8 +15,9 @@ export class User {
   public city: string;
   public state: string;
 
-  constructor(name: string, email: string, password: string, birth: string, sex: string, points: string, phone: string, street: string,
+  constructor(id: number, name: string, email: string, password: string, birth: string, sex: string, points: string, phone: string, street: string,
               complement: string, number: number, neighborhood: string, city: string, state: string, zipcode: string) {
+    this._id = id;
     this.name = name;
     this.email = email;
     this.password = password;
