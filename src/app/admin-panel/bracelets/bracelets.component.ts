@@ -19,10 +19,12 @@ export class BraceletsComponent implements OnInit {
   constructor(private dialogService: DialogService, private crudService: CrudService) { }
 
   createBracelet() {
-    const bracelet: Bracelet = new Bracelet(false, null);
+    let bracelet: Bracelet;
     this.loading = true;
     this.crudService.create(this.route, bracelet).subscribe(response => {
+      bracelet = new Bracelet(false, null, response);
       this.bracelets.push(bracelet);
+      window.alert('Pulseira criada!');
       this.loading = false;
     }, error => {
       window.alert(error);
