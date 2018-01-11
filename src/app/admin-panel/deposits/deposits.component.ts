@@ -64,25 +64,6 @@ export class DepositsComponent implements OnInit {
     }
   }
 
-  updateDeposit(deposit: Deposit) {
-    this.dialogService.addDialog(NewDepositComponent, {
-      title: 'Editar depósito',
-      deposit: deposit
-    }).subscribe(depositFromModal => {
-      if (typeof depositFromModal !== 'undefined') {
-        const index = this.deposits.indexOf(deposit);
-        this.loading = true;
-        this.crudService.update(this.route + deposit.code, depositFromModal, 'deposit').subscribe(response => {
-          this.deposits[index] = depositFromModal;
-          this.loading = false;
-        }, error => {
-          window.alert(error);
-          this.loading = false;
-        });
-      }
-    });
-  }
-
   deleteDeposit(deposit: Deposit) {
     const index = this.deposits.indexOf(deposit);
     if (index !== -1) {
