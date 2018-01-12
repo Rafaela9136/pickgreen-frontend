@@ -61,7 +61,7 @@ export class DepositPlaceComponent implements OnInit {
     if (index !== -1) {
       if (window.confirm('Você tem certeza?')) {
          this.loading = true;
-         this.crudService.deleteById(this.route + place.code).subscribe(response => {
+         this.crudService.deleteById(this.route + place._id).subscribe(response => {
            this.depositPlaces.splice(index, 1);
            this.loading = false;
          }, error => {
