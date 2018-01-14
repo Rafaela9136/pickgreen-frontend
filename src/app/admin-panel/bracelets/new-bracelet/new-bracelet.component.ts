@@ -27,7 +27,7 @@ export class NewBraceletComponent extends DialogComponent<NewBraceletModel, Brac
   }
 
   onSubmit(form) {
-    this.result = new Bracelet(form.value.ativar, form.value.userId);
+    this.result = new Bracelet(form.value.ativar, form.value.userId, this.bracelet.code);
     this.close();
   }
 

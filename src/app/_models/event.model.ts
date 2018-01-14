@@ -9,8 +9,10 @@ export class Event {
 
   constructor(descricao: string, dataFim: string, dataInicio: string, place: number) {
     this.description = descricao;
-    this.ended = (moment(dataFim, 'DD-MM-YYYY')).format('MM-DD-YYYY');
-    this.created = (moment(dataInicio, 'DD-MM-YYYY')).format('MM-DD-YYYY');
+    if (dataFim) {
+      this.ended = (moment(dataFim, 'DD-MM-YYYY')).format('MM-DD-YYYY');
+      this.created = (moment(dataInicio, 'DD-MM-YYYY')).format('MM-DD-YYYY');
+    }
     this._place = place;
   }
 }

@@ -18,7 +18,11 @@
     <tr *ngFor="let bracelet of bracelets">
       <td style="vertical-align: middle">{{ bracelet.status ? 'Sim' : 'Não' }}</td>
       <td style="vertical-align: middle">{{ bracelet.code }}</td>
-      <td style="vertical-align: middle">{{ bracelet.user_id }}</td>
+      <td style="vertical-align: middle">
+        <select name="local" id="local" [ngModel]="bracelet._user" disabled>
+          <option *ngFor="let user of users" value="{{ user._id }}">{{ user.name }}</option>
+        </select>
+      </td>
       <td style="vertical-align: middle">
         <button class="btn btn-primary" (click)="updateBracelet(bracelet)">Editar</button>
         <button class="btn btn-danger" (click)="deleteBracelet(bracelet)">Remover</button></td>

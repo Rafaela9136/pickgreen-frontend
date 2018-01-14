@@ -43,6 +43,7 @@ export class BraceletsComponent implements OnInit {
       if (typeof braceletFromModal !== 'undefined') {
         const index = this.bracelets.indexOf(bracelet);
         this.loading = true;
+        braceletFromModal.user_id = braceletFromModal._user;
         this.crudService.update(this.route + bracelet.code, braceletFromModal, 'bracelet').subscribe(response => {
           this.bracelets[index] = braceletFromModal;
           this.loading = false;
@@ -73,7 +74,7 @@ export class BraceletsComponent implements OnInit {
 
   loadBracelets() {
     this.crudService.getAll(this.route).subscribe(bracelets => {
-      this.bracelets = bracelets
+      this.bracelets = bracelets;
     }, error => {
       window.alert(error);
     });
