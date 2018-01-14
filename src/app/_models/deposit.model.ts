@@ -8,4 +8,9 @@ export class Deposit {
   status: string;
   code: number;
   created: string;
+
+  constructor(status: string, place: number) {
+    this.status = status;
+    this._place = place;
+  }
 }

@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { DialogComponent, DialogService } from 'ng2-bootstrap-modal';
 import { Deposit } from '../../../_models/deposit.model';
 import { DateService } from '../../../_services/date.service';
+import { DepositPlace } from 'app/_models/deposit-place.model';
+import { CrudService } from 'app/_services/crud.service';
 
 export interface NewDepositModel {
   title: string;
@@ -18,13 +20,16 @@ export class NewDepositComponent extends DialogComponent<NewDepositModel, Deposi
 
   title: string;
   deposit: Deposit;
+  places: DepositPlace[] = [];
 
-  constructor(dialogService: DialogService, private dateService: DateService) {
+  constructor(dialogService: DialogService, private dateService: DateService,
+              private crudService: CrudService) {
     super(dialogService);
   }
 
   onSubmit(form) {
-    this.result = new Deposit();
+    this.result = new Deposit(form.status, form.local);
+    this.result.code =  this.deposit.code;
   };
 
   formatDate(date) {
@@ -34,6 +39,11 @@ export class NewDepositComponent extends DialogComponent<NewDepositModel, Deposi
   }
 
   ngOnInit() {
+    this.loadPlaces();
+  }
+
+  loadPlaces() {
+    this.crudService.getAll('placeApi/').subscribe(places => { this.places = places });
   }
 
 }

@@ -7,37 +7,29 @@
     <div class="modal-body">
 
 
-      <form #f="ngForm" class="form-horizontal">
-        <div class="form-group">
-          <label for="user" class="control-label col-sm-2" style="text-align: left">Id do usuário:</label>
+      <form #f="ngForm" (ngSubmit)="onSubmit(f.value)" class="form-horizontal">
+        <div class="form-group" [ngClass]="{ 'has-error': !local.valid && local.touched }">
+          <label for="local" class="control-label col-sm-2" style="text-align: left">Local:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="user" name="user" maxlength="150" [ngModel]="deposit._user" required #user="ngModel">
+            <select name="local" id="local" class="form-control" [ngModel]="deposit._place" required #local="ngModel">
+              <option *ngFor="let place of places" value="{{ place.code }}">{{ place.name }}</option>
+            </select>
           </div>
         </div>
 
         <div class="form-group">
-          <label for="local" class="control-label col-sm-2" style="text-align: left">Código do local:</label>
-          <div class="col-sm-10">
-            <input type="text" id="local" class="form-control" name="local" maxlength="30" [ngModel]="deposit._place" #local="ngModel" required>
+            <label for="status" class="control-label col-sm-2" style="text-align: left">Status:</label>
+            <div class="col-sm-10">
+              <select type="text" class="form-control" id="status" name="status" [ngModel]="deposit.status" >
+                <option value="pendente">pendente</option>
+                <option value="validado">validado</option>
+                <option value="invalidado">invalidado</option>
+              </select>
+            </div>
           </div>
-        </div>
-
-        <div class="form-group">
-          <label for="status" class="control-label col-sm-2" style="text-align: left">Status:</label>
-          <div class="col-sm-10">
-            <input type="text" id="status" class="form-control" name="status" maxlength="150" [ngModel]="deposit.status" #status="ngModel" required>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="dataCriacao" class="control-label col-sm-2" style="text-align: left">Data de criação:</label>
-          <div class="col-sm-10">
-            <input type="text" id="dataCriacao" class="form-control" name="dataCriacao" maxlength="150" [ngModel]="formatDate(deposit.created)" #dataCriacao="ngModel">
-          </div>
-        </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" (click)="onSubmit(deposit)"[disabled]="!f.valid">Ok</button>
+          <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Ok</button>
           <button type="button" class="btn btn-default" (click)="close()">Cancelar</button>
         </div>
 

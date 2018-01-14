@@ -25,6 +25,7 @@
       <td style="vertical-align: middle">{{ deposit.status }}</td>
       <td style="vertical-align: middle">{{ formatDate(deposit.created) }}</td>
       <td>
+        <button class="btn btn-primary" (click)="updateDeposit(deposit)">Editar</button>
         <button class="btn btn-danger" (click)="deleteDeposit(deposit)">Excluir</button>
       </td>
     </tr>

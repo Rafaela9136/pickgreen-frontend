@@ -48,6 +48,26 @@ export class DepositsComponent implements OnInit {
     });
   }
 
+  updateDeposit(deposit: Deposit) {
+    this.dialogService.addDialog(NewDepositComponent, {
+      title: 'Editar depósito',
+      deposit: deposit
+    }).subscribe(depositFromModal => {
+      console.log(depositFromModal);
+      if (typeof depositFromModal !== 'undefined') {
+        const index = this.deposits.indexOf(deposit);
+        this.loading = true;
+        this.crudService.update(this.route + deposit.code, depositFromModal, 'deposit').subscribe(response => {
+          this.deposits[index] = depositFromModal;
+          this.loading = false;
+        }, error => {
+          window.alert(error);
+          this.loading = false;
+        });
+      }
+    });
+  }
+
   findUser(id) {
     for (let i = 0; i < this.users.length; i++) {
       if (this.users[i]._id === id) {
