@@ -22,7 +22,7 @@ export class EventsComponent implements OnInit {
   createEvent() {
     this.dialogService.addDialog(NewEventComponent, {
       title: 'Novo evento',
-      event: new Event(null, null),
+      event: new Event(null, null, null, null),
       places: []
     }).subscribe((eventFromModal) => {
       if (typeof eventFromModal !== 'undefined') {

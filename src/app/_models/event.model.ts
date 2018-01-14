@@ -1,3 +1,5 @@
+import * as moment from 'moment';
+
 export class Event {
   _id: number;
   description: string;
@@ -5,8 +7,10 @@ export class Event {
   ended: string;
   _place: number;
 
-  constructor(descricao: string, dataFim: string) {
+  constructor(descricao: string, dataFim: string, dataInicio: string, place: number) {
     this.description = descricao;
-    this.ended = dataFim;
+    this.ended = (moment(dataFim, 'DD-MM-YYYY')).format('MM-DD-YYYY');
+    this.created = (moment(dataInicio, 'DD-MM-YYYY')).format('MM-DD-YYYY');
+    this._place = place;
   }
 }

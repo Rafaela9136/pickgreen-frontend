@@ -4,6 +4,7 @@ import { NewBraceletComponent } from './new-bracelet/new-bracelet.component';
 import { DialogService } from 'ng2-bootstrap-modal';
 import { Bracelet } from '../../_models/bracelet.model';
 import { CrudService } from '../../_services/crud.service';
+import { User } from 'app/_models/user.model';
 
 @Component({
   selector: 'app-bracelets',
@@ -13,6 +14,7 @@ import { CrudService } from '../../_services/crud.service';
 export class BraceletsComponent implements OnInit {
 
   bracelets: Bracelet[] = [];
+  users: User[] = [];
   route = 'braceletApi/';
   loading = false;
 
@@ -77,8 +79,13 @@ export class BraceletsComponent implements OnInit {
     });
   }
 
+  loadUsers() {
+    this.crudService.getAll('userApi/').subscribe(users => { this.users = users });
+  }
+
   ngOnInit() {
     this.loadBracelets();
+    this.loadUsers();
   }
 
 }
