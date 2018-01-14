@@ -8,6 +8,7 @@
   <table class="table table-striped">
     <thead>
     <tr>
+      <th>Local</th>
       <th>Descrição</th>
       <th>Data de início</th>
       <th>Data de fim</th>
@@ -17,6 +18,7 @@
     </thead>
     <tbody>
     <tr *ngFor="let event of events">
+      <td style="vertical-align: middle">{{ findPlace(event._place) }}</td>
       <td style="vertical-align: middle">{{ event.description }}</td>
       <td style="vertical-align: middle">{{ formatDate(event.created) }}</td>
       <td style="vertical-align: middle">{{ formatDate(event.ended) }}</td>

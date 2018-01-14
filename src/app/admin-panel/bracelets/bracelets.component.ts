@@ -84,6 +84,14 @@ export class BraceletsComponent implements OnInit {
     this.crudService.getAll('userApi/').subscribe(users => { this.users = users });
   }
 
+  findUser(id) {
+    for (let i = 0; i < this.users.length; i++) {
+      if (this.users[i]._id === id) {
+        return this.users[i].name;
+      }
+    }
+  }
+
   ngOnInit() {
     this.loadBracelets();
     this.loadUsers();

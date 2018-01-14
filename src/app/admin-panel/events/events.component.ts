@@ -5,6 +5,7 @@ import { DialogService } from 'ng2-bootstrap-modal'
 import { Event } from '../../_models/event.model';
 import { CrudService } from '../../_services/crud.service';
 import { DateService } from '../../_services/date.service';
+import { DepositPlace } from 'app/_models/deposit-place.model';
 
 @Component({
   selector: 'app-events',
@@ -14,6 +15,7 @@ import { DateService } from '../../_services/date.service';
 export class EventsComponent implements OnInit {
 
   events: Event[] = [];
+  places: DepositPlace[] = [];
   eventsRoute = 'eventApi/';
   loading = false;
 
@@ -82,12 +84,30 @@ export class EventsComponent implements OnInit {
     });
   }
 
+  loadPlaces () {
+    this.crudService.getAll('placeApi/').subscribe(places => {
+      this.places = places;
+    }, error => {
+      window.alert(error);
+    });
+  }
+
+  findPlace(code) {
+    console.log(code);
+    for (let i = 0; i < this.places.length; i++) {
+      if (this.places[i].code === code) {
+        return this.places[i].name;
+      }
+    }
+  }
+
   formatDate(date) {
     return this.dateService.toString(date);
   }
 
   ngOnInit() {
     this.loadEvents();
+    this.loadPlaces();
   }
 
 }
