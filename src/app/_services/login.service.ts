@@ -56,13 +56,13 @@ export class LoginService {
   }
 
   logout() {
-    if (!window.sessionStorage.getItem('userAdm') === null) {
+    if (window.sessionStorage.getItem('userAdm') !== null) {
       window.sessionStorage.removeItem('userAdm');
       this.admLogged = false;
       this.showAdmMenu = false;
     }
 
-    if (!window.sessionStorage.getItem('userCollector') === null) {
+    if (window.sessionStorage.getItem('userCollector') !== null) {
       window.sessionStorage.removeItem('userCollector');
       this.collectorLogged = false;
       this.showCollectorMenu = false;
@@ -73,11 +73,25 @@ export class LoginService {
   }
 
   isAdmLogged() {
-    return this.admLogged;
+    if (window.sessionStorage.getItem('userAdm')) {
+      this.admLogged = true;
+      this.showAdmMenu = true;
+      this.showMenuEmitter.emit(true);
+      this.showAdmMenuEmitter.emit(true);
+      return true;
+    }
+    return false;
   }
 
   isCollectorLogged() {
-    return this.collectorLogged;
+    if (window.sessionStorage.getItem('userCollector')) {
+      this.collectorLogged = true;
+      this.showCollectorMenu = true;
+      this.showMenuEmitter.emit(true);
+      this.showCollectorMenuEmitter.emit(true);
+      return true;
+    }
+    return false;
   }
 
 }
