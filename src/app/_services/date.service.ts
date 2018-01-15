@@ -5,9 +5,10 @@ export class DateService {
 
   constructor() { }
 
-  toString(date: String) {
+  toString(date: string) {
     const dateIn = date.slice(0, -1);
-    const dateOut = new Date(dateIn);
+    const dateOut = new Date(date);
+    dateOut.setUTCHours(12);
 
     let day = '' + dateOut.getDate();
     let month = '' + (dateOut.getMonth() + 1);

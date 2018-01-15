@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class DepositoComponent implements OnInit {
 
   code: number;
-  deposit: Deposit = new Deposit();
+  deposit: Deposit = new Deposit(null, null);
   deposits: Deposit[] = [];
   loading = false;
   depositExists = false;

@@ -25,7 +25,6 @@ export class EventsComponent implements OnInit {
     this.dialogService.addDialog(NewEventComponent, {
       title: 'Novo evento',
       event: new Event(null, null, null, null),
-      places: []
     }).subscribe((eventFromModal) => {
       if (typeof eventFromModal !== 'undefined') {
         this.loading = true;
@@ -93,7 +92,7 @@ export class EventsComponent implements OnInit {
   }
 
   findPlace(code) {
-    console.log(code);
+    code = Number(code);
     for (let i = 0; i < this.places.length; i++) {
       if (this.places[i].code === code) {
         return this.places[i].name;

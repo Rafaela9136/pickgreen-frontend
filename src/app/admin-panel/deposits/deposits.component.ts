@@ -53,7 +53,6 @@ export class DepositsComponent implements OnInit {
       title: 'Editar depósito',
       deposit: deposit
     }).subscribe(depositFromModal => {
-      console.log(depositFromModal);
       if (typeof depositFromModal !== 'undefined') {
         const index = this.deposits.indexOf(deposit);
         this.loading = true;
