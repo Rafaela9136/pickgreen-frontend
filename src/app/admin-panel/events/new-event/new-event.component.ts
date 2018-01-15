@@ -29,6 +29,7 @@ export class NewEventComponent extends DialogComponent<EventModel, Event> implem
 
   onSubmit(form) {
     this.result = new Event(form.value.descricao, form.value.dataFim, form.value.dataInicio, form.value.local);
+    this.result._id = this.event._id;
     this.close();
   }
 

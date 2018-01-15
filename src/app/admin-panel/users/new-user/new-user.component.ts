@@ -25,9 +25,9 @@ export class NewUserComponent extends DialogComponent<ConfirmModel, User> implem
   }
 
   onSubmit(form) {
-    this.result = new User(form.value._id, form.value.name, form.value.email, form.value.password, form.value.data, form.value.sexo, form.value.points,
-      form.value.telefone, form.value.rua, form.value.complemento, form.value.numero, form.value.bairro, form.value.cidade,
-      form.value.estado, form.value.cep);
+    this.result = new User(this.user._id, form.value.name, form.value.email, form.value.password, form.value.data,
+      form.value.sexo, form.value.points, form.value.telefone, form.value.rua, form.value.complemento, form.value.numero, 
+      form.value.bairro, form.value.cidade, form.value.estado, form.value.cep);
     this.close();
   }
 

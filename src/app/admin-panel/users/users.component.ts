@@ -62,6 +62,7 @@ export class UsersComponent implements OnInit {
     if (index !== -1) {
       if (window.confirm('Você tem certeza?')) {
          this.loading = true;
+         console.log();
          this.crudService.deleteById(this.route + user._id).subscribe(response => {
           this.users.splice(index, 1);
            this.loading = false;
