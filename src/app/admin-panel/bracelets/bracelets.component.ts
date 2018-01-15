@@ -85,6 +85,7 @@ export class BraceletsComponent implements OnInit {
   }
 
   findUser(id) {
+    id = Number(id);
     for (let i = 0; i < this.users.length; i++) {
       if (this.users[i]._id === id) {
         return this.users[i].name;
