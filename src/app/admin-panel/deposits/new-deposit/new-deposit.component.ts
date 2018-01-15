@@ -30,6 +30,10 @@ export class NewDepositComponent extends DialogComponent<NewDepositModel, Deposi
   onSubmit(form) {
     this.result = new Deposit(form.status, form.local);
     this.result.code =  this.deposit.code;
+    this.result._user = this.deposit._user;
+    this.result._id = this.deposit._id;
+    this.result.created = this.deposit.created;
+    this.close();
   };
 
   formatDate(date) {

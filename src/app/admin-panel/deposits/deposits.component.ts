@@ -54,6 +54,8 @@ export class DepositsComponent implements OnInit {
       deposit: deposit
     }).subscribe(depositFromModal => {
       if (typeof depositFromModal !== 'undefined') {
+        depositFromModal._place = Number(depositFromModal._place);
+        depositFromModal._user = Number(depositFromModal._user);
         const index = this.deposits.indexOf(deposit);
         this.loading = true;
         this.crudService.update(this.route + deposit.code, depositFromModal, 'deposit').subscribe(response => {
@@ -68,6 +70,7 @@ export class DepositsComponent implements OnInit {
   }
 
   findUser(id) {
+    id = Number(id);
     for (let i = 0; i < this.users.length; i++) {
       if (this.users[i]._id === id) {
         return this.users[i].name;
