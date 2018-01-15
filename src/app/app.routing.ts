@@ -28,4 +28,4 @@ const APP_ROUTES: Routes = [
   { path: 'depositos', component: DepositsComponent, canActivate: [AdmAuthGuard] }
 ];
 
-export const routing: ModuleWithProviders = RouterModule.forRoot(APP_ROUTES);
+export const routing: ModuleWithProviders = RouterModule.forRoot(APP_ROUTES,  { useHash: true });
