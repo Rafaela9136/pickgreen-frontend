@@ -42,9 +42,11 @@ export class EventsComponent implements OnInit {
   updateEvent(event: Event) {
     this.dialogService.addDialog(NewEventComponent, {
       title: 'Novo evento',
-      event: event
+      event: event,
+      places: []
     }).subscribe((eventFromModal) => {
       if (typeof eventFromModal !== 'undefined') {
+        eventFromModal._place = Number(eventFromModal._place);
         const index = this.events.indexOf(event);
         this.loading = true;
         this.crudService.update(this.eventsRoute + event._id, eventFromModal, 'event').subscribe(response => {
