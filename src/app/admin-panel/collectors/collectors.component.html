@@ -8,6 +8,7 @@
   <table class="table table-striped">
     <thead>
     <tr>
+      <th>Código</th>
       <th>Nome</th>
       <th>Endereço</th>
       <th>Cidade</th>
@@ -17,6 +18,7 @@
     </thead>
     <tbody>
     <tr *ngFor="let collector of collectors">
+      <td style="vertical-align: middle">{{ collector.zipcode }}</td>
       <td style="vertical-align: middle">{{ collector.name }}</td>
       <td style="vertical-align: middle">{{ collector.street }}, {{collector.number}}</td>
       <td style="vertical-align: middle">{{ collector.city }}</td>
