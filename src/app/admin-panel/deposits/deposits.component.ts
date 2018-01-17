@@ -62,7 +62,7 @@ export class DepositsComponent implements OnInit {
           this.deposits[index] = depositFromModal;
           this.loading = false;
         }, error => {
-          window.alert(error);
+          window.alert(error._body);
           this.loading = false;
         });
       }
