@@ -52,7 +52,7 @@ export class LoginService {
     this.showCollectorMenu = true;
     this.showMenuEmitter.emit(true);
     this.showCollectorMenuEmitter.emit(true);
-    this.router.navigate(['/mapa']);
+    this.router.navigate(['/confirmar-deposito']);
   }
 
   logout() {

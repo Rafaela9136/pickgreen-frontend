@@ -26,7 +26,7 @@ export class CollectorsComponent implements OnInit {
       if (typeof collectorFromModal !== 'undefined') {
         this.loading = true;
         this.crudService.create(this.route, collectorFromModal).subscribe(response => {
-          collectorFromModal.zipcode = response.zipcode;
+          collectorFromModal.pin = response.pin;
           this.collectors.push(collectorFromModal);
           this.loading = false;
         }, error => {

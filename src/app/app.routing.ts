@@ -17,7 +17,7 @@ import { DepositsComponent } from './admin-panel/deposits/deposits.component';
 const APP_ROUTES: Routes = [
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'mapa', component: MapComponent, canActivate: [CollectorAuthGuard] },
+  { path: 'mapa', component: MapComponent, canActivate: [AdmAuthGuard] },
   { path: 'confirmar-deposito', component: DepositoComponent, canActivate: [CollectorAuthGuard] },
   { path: 'painel', component: AdminPanelComponent, canActivate: [AdmAuthGuard] },
   { path: 'usuarios', component: UsersComponent, canActivate: [AdmAuthGuard] },
