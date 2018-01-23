@@ -3,7 +3,10 @@
     <div class="jumbotron" id="form-deposito-box">
       <h2>Confirmar depósito</h2>
       <hr>
-
+      <div>
+          <label for="totalDeposits" class="control-label">Quantidade Restante:</label>
+          <input type="number" class="form-control" id="totalDeposits" name="totalDeposits" [(ngModel)]="totalDeposits">
+        </div>
       <form #f="ngForm" (ngSubmit)="onSubmit()">
         <div class="form-group" [ngClass]="{ 'has-error' : !codigoDeposito.valid && codigoDeposito.touched }">
           <label for="codigoDeposito" class="control-label">Código da sacola:</label>

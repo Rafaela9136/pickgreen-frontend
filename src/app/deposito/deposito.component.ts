@@ -17,11 +17,13 @@ export class DepositoComponent implements OnInit {
   deposits: Deposit[] = [];
   loading = false;
   depositExists = false;
+  totalDeposits = 0;
   currentUser = JSON.parse((window.sessionStorage.getItem('userCollector')));
 
   constructor(private crudService: CrudService, private http: Http, private router: Router) { }
 
   onSubmit() {
+    window.sessionStorage.setItem('totalDeposits', String(this.totalDeposits));
     this.loading = true;
     for (let i = 0; i < this.deposits.length; i++) {
       if (this.deposits[i].code === this.code) {
@@ -29,7 +31,13 @@ export class DepositoComponent implements OnInit {
         this.deposit._collector = this.currentUser._id;
         this.http.post('https://pick-green-api.herokuapp.com/depositApi/confirm/' + this.code, this.deposit).subscribe(response => {
           this.loading = false;
+          if (this.totalDeposits > 0) {
+            this.totalDeposits -= 1;
+            window.sessionStorage.setItem('totalDeposits', String(this.totalDeposits));
+          }
           this.router.navigate(['/confirmar-deposito']);
+          this.code = 0;
+          this.deposit.weight = 0;
           return window.alert('Depósito confirmado!');
         }, error => {
           this.loading = false;
@@ -53,6 +61,11 @@ export class DepositoComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (window.sessionStorage.getItem('totalDeposits') === null) {
+      this.totalDeposits = 0;
+    } else {
+      this.totalDeposits = Number(JSON.parse((window.sessionStorage.getItem('totalDeposits'))));
+    }
     this.loadDeposits();
   }
 
