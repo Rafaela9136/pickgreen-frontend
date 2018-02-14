@@ -15,7 +15,7 @@
         <div class="form-group" [ngClass]="{ 'has-error' : !pesoSacola.valid && pesoSacola.touched }">
           <label for="pesoSacola" class="control-label">Peso do Reciclável (Kg):</label>
           <input type="number" class="form-control" id="pesoSacola" name="pesoSacola" [(ngModel)]="deposit.weight" length="0" max="5" 
-                  required #pesoSacola="ngModel" pattern="^$|^([1-5]|[1])?">
+                  required #pesoSacola="ngModel" pattern="^([1-4]{1,10}){1}(\.[0-9]{1,10})?$|^(5)]?$">
           <div *ngIf="pesoSacola.errors && (pesoSacola.dirty || pesoSacola.touched)">
             <div [hidden]="!pesoSacola.errors.pattern">
                 O peso do reciclável (Kg) deve ser no mínimo 1 kg e no máximo até 5kg.
