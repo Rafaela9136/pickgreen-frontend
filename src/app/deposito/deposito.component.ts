@@ -19,6 +19,7 @@ export class DepositoComponent implements OnInit {
   depositExists = false;
   totalDeposits = 0;
   currentUser = JSON.parse((window.sessionStorage.getItem('userCollector')));
+  isPharmacy = false;
 
   constructor(private crudService: CrudService, private http: Http, private router: Router) { }
 
@@ -52,6 +53,31 @@ export class DepositoComponent implements OnInit {
     this.loading = false;
   }
 
+  onSubmitPharmacy() {
+    this.loading = true;
+    for (let i = 0; i < this.deposits.length; i++) {
+      if (this.deposits[i].code === this.code) {
+        this.depositExists = true;
+        this.deposit.weight = 1;
+        this.deposit._collector = this.currentUser._id;
+        this.http.post('https://pick-green-api.herokuapp.com/depositApi/confirm/' + this.code, this.deposit).subscribe(response => {
+          this.loading = false;
+          this.router.navigate(['/confirmar-deposito']);
+          this.code = 0;
+          return window.alert('Depósito confirmado!');
+        }, error => {
+          this.loading = false;
+          return window.alert(error);
+        });
+      }
+    }
+    if (!this.depositExists) {
+      window.alert('Depósito inexistente');
+    }
+
+    this.loading = false;
+  }
+
   loadDeposits() {
     this.crudService.getAll('depositApi/').subscribe(deposits => {
       this.deposits = deposits;
@@ -61,6 +87,13 @@ export class DepositoComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    const colectorName = this.currentUser.name.toLowerCase();
+
+    if (colectorName.includes('farmácia') || colectorName.includes('farmacia') || colectorName.includes('drogaria')) {
+      this.isPharmacy = true;
+    }
+
     if (window.sessionStorage.getItem('totalDeposits') === null) {
       this.totalDeposits = 0;
     } else {
@@ -68,5 +101,4 @@ export class DepositoComponent implements OnInit {
     }
     this.loadDeposits();
   }
-
 }
