@@ -62,7 +62,7 @@ export class CollectorsComponent implements OnInit {
     if (index !== -1) {
        if (window.confirm('Você tem certeza?')) {
          this.loading = true;
-         this.crudService.deleteById(this.route + collector._id).subscribe(response => {
+         this.crudService.deleteById(this.route + collector.pin).subscribe(response => {
            this.collectors.splice(index, 1);
            this.loading = false;
          }, error => {

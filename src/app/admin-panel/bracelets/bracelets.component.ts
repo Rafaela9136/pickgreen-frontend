@@ -93,6 +93,24 @@ export class BraceletsComponent implements OnInit {
     }
   }
 
+
+
+  expired(dataAtivacao: string) {
+    if (dataAtivacao) {
+      const dataAtv = new Date(dataAtivacao.slice(0, 10));
+      const atual = new Date();
+      const diff = Math.ceil(Math.abs((dataAtv.getTime() - atual.getTime()) / 86400000) + 0.1);
+
+      if (diff < 31) {
+        return 'Não';
+      } else {
+        return 'Sim';
+      }
+    } else {
+      return 'Não'
+    }
+  }
+ 
   ngOnInit() {
     this.loadBracelets();
     this.loadUsers();
