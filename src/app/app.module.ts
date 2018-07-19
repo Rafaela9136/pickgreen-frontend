@@ -27,6 +27,11 @@ import { LoginService } from './_services/login.service';
 import { CrudService } from './_services/crud.service';
 import { AdmAuthGuard } from './_guards/adm-auth.guard';
 import { CollectorAuthGuard } from './_guards/collector-auth.guard';
+import { DepositsComponent } from './admin-panel/deposits/deposits.component';
+import { NewDepositComponent } from './admin-panel/deposits/new-deposit/new-deposit.component';
+import { DateService } from './_services/date.service';
+import { AlertModule } from 'ngx-bootstrap';
+import { BsDropdownModule } from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
@@ -44,7 +49,9 @@ import { CollectorAuthGuard } from './_guards/collector-auth.guard';
     NewEventComponent,
     NewDepositPlaceComponent,
     NewCollectorComponent,
-    NewBraceletComponent
+    NewBraceletComponent,
+    DepositsComponent,
+    NewDepositComponent,
   ],
   imports: [
     BootstrapModalModule,
@@ -53,6 +60,8 @@ import { CollectorAuthGuard } from './_guards/collector-auth.guard';
     CommonModule,
     FormsModule,
     HttpModule,
+    AlertModule.forRoot(),
+    BsDropdownModule.forRoot(),
     DateValueAccessorModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBb4zfxXZMu-1Mt-J8XdcsydsCyEkXcyX0'
@@ -63,9 +72,10 @@ import { CollectorAuthGuard } from './_guards/collector-auth.guard';
     NewEventComponent,
     NewDepositPlaceComponent,
     NewCollectorComponent,
-    NewBraceletComponent
+    NewBraceletComponent,
+    NewDepositComponent
   ],
-  providers: [LoginService, CrudService, AdmAuthGuard, CollectorAuthGuard],
+  providers: [LoginService, CrudService, AdmAuthGuard, CollectorAuthGuard, DateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

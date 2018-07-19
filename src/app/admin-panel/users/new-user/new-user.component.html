@@ -11,28 +11,29 @@
         <div class="form-group" [ngClass]="{ 'has-error' : !name.valid && name.touched }">
           <label for="nome" class="control-label col-sm-2" style="text-align: left">Nome:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="nome" name="name" required [ngModel]="user.name" #name="ngModel">
+            <input type="text" class="form-control" id="nome" name="name" required [ngModel]="user.name" maxlength="100" #name="ngModel">
           </div>
         </div>
 
         <div class="form-group" [ngClass]="{ 'has-error' : !email.valid && email.touched }">
           <label for="email" class="control-label col-sm-2" style="text-align: left">Email:</label>
           <div class="col-sm-10">
-            <input type="email" class="form-control" id="email" name="email" required [ngModel]="user.email" #email="ngModel">
+            <input type="email" class="form-control" id="email" name="email" required [ngModel]="user.email" maxlength="100" #email="ngModel">
           </div>
         </div>
 
         <div class="form-group" [ngClass]="{ 'has-error' : !password.valid && password.touched }">
           <label for="senha" class="control-label col-sm-2" style="text-align: left">Senha:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="senha" name="password" required [ngModel]="user.password" #password="ngModel">
+            <input type="password" class="form-control" id="senha" name="password" required [ngModel]="user.password" maxlength="60" #password="ngModel">
           </div>
         </div>
 
         <div class="form-group" [ngClass]="{ 'has-error' : !data.valid && data.touched }">
-          <label for="datanascimento" class="control-label col-sm-2">Nascimento:</label>
+          <label for="datanascimento" class="control-label col-sm-2" style="text-align: left">Nascimento:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="datanascimento" name="data" [ngModel]="user.birth" #data="ngModel">
+            <input type="text" class="form-control" id="datanascimento" name="data" [ngModel]="formatDate(user.birth)" #data="ngModel" maxlength="10" placeholder="Formato: dd/mm/aaaa"
+            pattern="^(?:(?:31(\/)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$">
           </div>
         </div>
 
@@ -49,7 +50,7 @@
         <div class="form-group" [ngClass]="{ 'has-error' : !telefone.valid && telefone.touched }">
           <label for="telefone" class="control-label col-sm-2" style="text-align: left">Telefone:</label>
           <div class="col-sm-10">
-            <input type="tel" id="telefone" class="form-control" name="telefone" required [ngModel]="user.phone" #telefone="ngModel">
+            <input type="tel" id="telefone" class="form-control" name="telefone" required maxlength="30" [ngModel]="user.phone" #telefone="ngModel">
           </div>
         </div>
 
@@ -63,55 +64,55 @@
         <div class="form-group" [ngClass]="{ 'has-error' : !rua.valid && rua.touched }">
           <label for="rua" class="control-label col-sm-2" style="text-align: left">Rua:</label>
           <div class="col-sm-10">
-            <input type="text" id="rua" class="form-control" name="rua" required [ngModel]="user.street" #rua="ngModel">
+            <input type="text" id="rua" class="form-control" name="rua" required maxlength="150" [ngModel]="user.street" #rua="ngModel">
           </div>
         </div>
 
         <div class="form-group">
           <label for="complemento" class="control-label col-sm-2" style="text-align: left">Complemento:</label>
           <div class="col-sm-10">
-            <input type="text" id="complemento" class="form-control" name="complemento" [ngModel]="user.complement">
+            <input type="text" id="complemento" class="form-control" name="complemento" maxlength="150" [ngModel]="user.complement">
           </div>
         </div>
 
         <div class="form-group" [ngClass]="{ 'has-error' : !numero.valid && numero.touched }">
           <label for="numero" class="control-label col-sm-2" style="text-align: left">Número</label>
           <div class="col-sm-10">
-            <input type="number" id="numero" class="form-control" name="numero" required [ngModel]="user.number" #numero="ngModel">
+            <input type="text" id="numero" class="form-control" name="numero" required pattern="[0-9]{1,5}" maxlength="5" [ngModel]="user.number" #numero="ngModel">
           </div>
         </div>
 
         <div class="form-group" [ngClass]="{ 'has-error' : !bairro.valid && bairro.touched }">
           <label for="bairro" class="control-label col-sm-2" style="text-align: left">Bairro:</label>
           <div class="col-sm-10">
-            <input type="text" id="bairro" class="form-control" name="bairro" required [ngModel]="user.neighborhood" #bairro="ngModel">
+            <input type="text" id="bairro" class="form-control" name="bairro" required maxlength="100" [ngModel]="user.neighborhood" #bairro="ngModel">
           </div>
         </div>
 
         <div class="form-group" [ngClass]="{ 'has-error' : !cidade.valid && cidade.touched }">
           <label for="cidade" class="control-label col-sm-2" style="text-align: left">Cidade:</label>
           <div class="col-sm-10">
-            <input type="text" id="cidade" class="form-control" name="cidade" required [ngModel]="user.city" #cidade="ngModel">
+            <input type="text" id="cidade" class="form-control" name="cidade" required maxlength="100" [ngModel]="user.city" #cidade="ngModel">
           </div>
         </div>
 
         <div class="form-group" [ngClass]="{ 'has-error' : !estado.valid && estado.touched }">
           <label for="estado" class="control-label col-sm-2" style="text-align: left">Estado:</label>
           <div class="col-sm-10">
-            <input type="text" id="estado" class="form-control" name="estado" required [ngModel]="user.state" #estado="ngModel">
+            <input type="text" id="estado" class="form-control" name="estado" required maxlength="100" [ngModel]="user.state" #estado="ngModel">
           </div>
         </div>
 
         <div class="form-group" [ngClass]="{ 'has-error' : !cep.valid && cep.touched }">
           <label for="cep" class="control-label col-sm-2" style="text-align: left">CEP:</label>
           <div class="col-sm-10">
-            <input type="text" id="cep" class="form-control" name="cep" required [ngModel]="user.zipcode" #cep="ngModel">
+            <input type="text" id="cep" class="form-control" name="cep" required maxlength="9" [ngModel]="user.zipcode" #cep="ngModel">
           </div>
         </div>
 
         <div class="modal-footer">
           <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Ok</button>
-          <button type="button" class="btn btn-default" (click)="close()">Cancel</button>
+          <button type="button" class="btn btn-default" (click)="close()">Cancelar</button>
         </div>
 
       </form>

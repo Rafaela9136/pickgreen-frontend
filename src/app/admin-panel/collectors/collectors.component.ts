@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { NewCollectorComponent } from './new-collector/new-collector.component';
 import { DialogService } from 'ng2-bootstrap-modal';
-import { Collector } from './collector.model';
+import { Collector } from '../../_models/collector.model';
 import { CrudService } from '../../_services/crud.service';
 
 @Component({
@@ -26,6 +26,7 @@ export class CollectorsComponent implements OnInit {
       if (typeof collectorFromModal !== 'undefined') {
         this.loading = true;
         this.crudService.create(this.route, collectorFromModal).subscribe(response => {
+          collectorFromModal.pin = response.pin;
           this.collectors.push(collectorFromModal);
           this.loading = false;
         }, error => {
@@ -59,14 +60,16 @@ export class CollectorsComponent implements OnInit {
     const index = this.collectors.indexOf(collector);
 
     if (index !== -1) {
-      this.loading = true;
-      this.crudService.deleteById(this.route + collector._id).subscribe(response => {
-        this.collectors.splice(index, 1);
-        this.loading = false;
-      }, error => {
-        console.log(error.statusText);
-        this.loading = false;
-      });
+       if (window.confirm('Você tem certeza?')) {
+         this.loading = true;
+         this.crudService.deleteById(this.route + collector.pin).subscribe(response => {
+           this.collectors.splice(index, 1);
+           this.loading = false;
+         }, error => {
+           console.log(error.statusText);
+           this.loading = false;
+         });
+       }
     }
   }
 

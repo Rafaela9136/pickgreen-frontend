@@ -10,6 +10,8 @@
     <tr>
       <th>Foi ativada</th>
       <th>Código</th>
+      <th>Expirada</th>
+      <th>Dono</th>
       <th>Ações</th>
     </tr>
     </thead>
@@ -17,6 +19,8 @@
     <tr *ngFor="let bracelet of bracelets">
       <td style="vertical-align: middle">{{ bracelet.status ? 'Sim' : 'Não' }}</td>
       <td style="vertical-align: middle">{{ bracelet.code }}</td>
+      <td style="vertical-align: middle">{{ expired(bracelet.created)}}</td>
+      <td style="vertical-align: middle">{{ findUser(bracelet._user) }}</td>
       <td style="vertical-align: middle">
         <button class="btn btn-primary" (click)="updateBracelet(bracelet)">Editar</button>
         <button class="btn btn-danger" (click)="deleteBracelet(bracelet)">Remover</button></td>

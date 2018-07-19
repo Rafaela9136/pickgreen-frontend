@@ -11,8 +11,8 @@
         <div class="form-group" id="form-item" [ngClass]="{ 'has-error' : !pin.valid && pin.touched }">
           <label for="pin" class="control-label col-md-3">Digite o pin:</label>
           <div class="col-md-8 col-md-offset-1" style="margin-left: 10px">
-            <input type="password" class="form-control" id="pin" name="pin" [(ngModel)]="user.pin" maxlength="8" m required #pin="ngModel">
-            <div *ngIf="pin.invalid && pin.touched" class="help-block">Pin inválido!</div>
+            <input type="password" class="form-control" pattern="[0-9]{8}" id="pin" name="pin" [(ngModel)]="user.pin" maxlength="8" required #pin="ngModel">
+            <div *ngIf="pin.invalid && pin.touched" class="help-block">Pin deve conter 8 caracteres e apenas números!</div>
           </div>
         </div>
 

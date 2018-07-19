@@ -4,7 +4,7 @@ import { Http, Response } from '@angular/http';
 @Injectable()
 export class CrudService {
 
-  apiUrl = 'http://pick-green-api.herokuapp.com/';
+  apiUrl = 'https://pick-green-api.herokuapp.com/';
 
   constructor(private http: Http) { }
 

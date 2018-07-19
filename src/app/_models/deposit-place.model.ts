@@ -1,27 +1,32 @@
 export class DepositPlace {
   _id: number;
+  _material: [number];
   zipcode: string;
   state: string;
   city: string;
   neighborhood: string;
   number: string;
   street: string;
+  complement: string;
   phone: string;
   name: string;
+  code: number;
   geolocalization: {
-    lat: string,
+    lat: string
     lng: string
   }
 
-  constructor(name: string, phone: string, street: string, number: string, neighborhood: string, city: string,
-              state: string, zipcode: string) {
+  constructor(name: string, phone: string, street: string, complement: string, number: string, neighborhood: string, city: string,
+              state: string, zipcode: string, material: [number]) {
     this.name = name;
     this.phone = phone;
     this.street = street;
+    this.complement = complement;
     this.number = number;
     this.neighborhood = neighborhood;
     this.city = city;
     this.state = state;
     this.zipcode = zipcode;
+    this._material = material;
   }
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { NewDepositPlaceComponent } from './new-deposit-place/new-deposit-place.component';
 import { DialogService } from 'ng2-bootstrap-modal';
-import { DepositPlace } from './deposit-place.model';
+import { DepositPlace } from '../../_models/deposit-place.model';
 import { CrudService } from '../../_services/crud.service';
 
 @Component({
@@ -21,7 +21,7 @@ export class DepositPlaceComponent implements OnInit {
   createDepositPlace() {
     this.dialogService.addDialog(NewDepositPlaceComponent, {
       title: 'Novo local de depósito',
-      place: new DepositPlace(null, null, null, null, null, null, null, null)
+      place: new DepositPlace(null, null, null, null, null, null, null, null, null, null)
     }).subscribe((placeFromModal) => {
       if (typeof placeFromModal !== 'undefined') {
         this.loading = true;
@@ -44,7 +44,7 @@ export class DepositPlaceComponent implements OnInit {
       if (typeof placeFromModal !== 'undefined') {
         const index = this.depositPlaces.indexOf(place);
         this.loading = true;
-        this.crudService.update(this.route + place._id, placeFromModal, 'depositPlace').subscribe(response => {
+        this.crudService.update(this.route + place.code, placeFromModal, 'depositPlace').subscribe(response => {
           this.depositPlaces[index] = placeFromModal;
           this.loading = false;
         }, error => {
@@ -59,14 +59,16 @@ export class DepositPlaceComponent implements OnInit {
     const index = this.depositPlaces.indexOf(place);
 
     if (index !== -1) {
-      this.loading = true;
-      this.crudService.deleteById(this.route + place._id).subscribe(response => {
-        this.depositPlaces.splice(index, 1);
-        this.loading = false;
-      }, error => {
-        window.alert(error);
-        this.loading = false;
-      });
+      if (window.confirm('Você tem certeza?')) {
+         this.loading = true;
+         this.crudService.deleteById(this.route + place.code).subscribe(response => {
+           this.depositPlaces.splice(index, 1);
+           this.loading = false;
+         }, error => {
+           window.alert(error);
+           this.loading = false;
+         });
+       }
     }
   }
 

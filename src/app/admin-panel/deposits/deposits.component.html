@@ -1,0 +1,36 @@
+<div id="header">
+  <div class="container">
+    <h1 style="color: white">Depósitos</h1>
+  </div>
+</div>
+
+<div style="background-color: white">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Código</th>
+      <th>Nome</th>
+      <th>Local</th>
+      <th>Status</th>
+      <th>Data de Criação</th>
+      <th>Ações</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let deposit of deposits">
+      <td style="vertical-align: middle">{{ deposit.code }}</td>
+      <td style="vertical-align: middle">{{ findUser(deposit._user) }}</td>
+      <td style="vertical-align: middle">{{ findPlace(deposit._place) }}</td>
+      <td style="vertical-align: middle">{{ deposit.status }}</td>
+      <td style="vertical-align: middle">{{ formatDate(deposit.created) }}</td>
+      <td>
+        <button class="btn btn-primary" (click)="updateDeposit(deposit)">Editar</button>
+        <button class="btn btn-danger" (click)="deleteDeposit(deposit)">Excluir</button>
+      </td>
+    </tr>
+
+    </tbody>
+
+  </table>
+</div>

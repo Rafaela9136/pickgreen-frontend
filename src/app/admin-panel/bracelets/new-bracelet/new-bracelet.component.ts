@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { DialogService, DialogComponent } from 'ng2-bootstrap-modal';
-import { Bracelet } from '../bracelet.model';
-import { User } from '../../users/user.model';
+import { Bracelet } from '../../../_models/bracelet.model';
+import { User } from '../../../_models/user.model';
 import { CrudService } from '../../../_services/crud.service';
 
 export interface NewBraceletModel {
@@ -27,7 +27,7 @@ export class NewBraceletComponent extends DialogComponent<NewBraceletModel, Brac
   }
 
   onSubmit(form) {
-    this.result = new Bracelet(form.value.ativar, form.value.userId);
+    this.result = new Bracelet(form.value.ativar, form.value.userId, this.bracelet.code);
     this.close();
   }
 

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 import { DialogComponent, DialogService } from 'ng2-bootstrap-modal';
-import { Event } from '../event.model';
-import { DepositPlace } from '../../deposit-place/deposit-place.model';
+import { Event } from '../../../_models/event.model';
+import { DepositPlace } from '../../../_models/deposit-place.model';
 import { CrudService } from '../../../_services/crud.service';
+import { DateService } from '../../../_services/date.service';
 
 export interface EventModel {
   title: string;
@@ -22,17 +23,24 @@ export class NewEventComponent extends DialogComponent<EventModel, Event> implem
   event: Event;
   places: DepositPlace[] = [];
 
-  constructor(dialogService: DialogService, private crudService: CrudService) {
+  constructor(dialogService: DialogService, private crudService: CrudService, private dateService: DateService) {
     super(dialogService);
   }
 
   onSubmit(form) {
-    this.result = new Event(form.value.descricao, form.value.dataFim);
+    this.result = new Event(form.value.descricao, form.value.dataFim, form.value.dataInicio, form.value.local);
+    this.result._id = this.event._id;
     this.close();
   }
 
   loadPlaces() {
     this.crudService.getAll('placeApi/').subscribe(places => { this.places = places });
+  }
+
+  formatDate(date) {
+    if (date != null) {
+      return this.dateService.toString(date);
+    }
   }
 
   ngOnInit() {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DepositPlace } from '../admin-panel/deposit-place/deposit-place.model';
+import { DepositPlace } from '../_models/deposit-place.model';
 import { CrudService } from '../_services/crud.service';
 
 @Component({

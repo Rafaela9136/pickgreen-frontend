@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { NewUserComponent } from './new-user/new-user.component';
 import { DialogService } from 'ng2-bootstrap-modal';
-import { User } from './user.model';
+import { User } from '../../_models/user.model';
 import { CrudService } from '../../_services/crud.service';
 
 @Component({
@@ -24,7 +24,7 @@ export class UsersComponent implements OnInit {
     this.dialogService.addDialog(NewUserComponent, {
       title: 'Novo usuário',
       message: 'Confirm message',
-      user: new User(null, null, null, null, null, null, null, null, null, null, null, null, null, null)
+      user: new User(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null)
     }).subscribe((userFromModal) => {
       if (typeof userFromModal !== 'undefined') {
         this.loading = true;
@@ -60,14 +60,17 @@ export class UsersComponent implements OnInit {
   deleteUser(user: User) {
     const index = this.users.indexOf(user);
     if (index !== -1) {
-      this.loading = true;
-      this.crudService.deleteById(this.route + user._id).subscribe(response => {
-        this.users.splice(index, 1);
-        this.loading = false;
-      }, error => {
-        window.alert(error);
-        this.loading = false;
-      });
+      if (window.confirm('Você tem certeza?')) {
+         this.loading = true;
+         console.log();
+         this.crudService.deleteById(this.route + user._id).subscribe(response => {
+          this.users.splice(index, 1);
+           this.loading = false;
+         }, error => {
+           window.alert(error);
+           this.loading = false;
+         });
+       }
     }
   }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FinalUser } from '../_services/login.service';
+import { AlertModule } from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-admin-panel',

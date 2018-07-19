@@ -6,10 +6,7 @@
     <div *ngIf="showMenu" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-left" *ngIf="showCollectorMenu">
         <li routerLinkActive="active">
-          <a routerLink="/mapa" style="color: white">Mapa</a>
-        </li>
-        <li routerLinkActive="active">
-          <a routerLink="/confirmar-deposito" style="color: white">Novo depósito</a>
+          <a routerLink="/confirmar-deposito" style="color: white">Confirmar depósito</a>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-left" *ngIf="showAdmMenu">
@@ -17,7 +14,10 @@
         <li routerLinkActive="active"><a routerLink="eventos">Eventos</a></li>
         <li routerLinkActive="active"><a routerLink="locais-de-deposito">Locais de depósito</a></li>
         <li routerLinkActive="active"><a routerLink="coletores">Coletores</a></li>
+        <li routerLinkActive="active"><a routerLink="depositos">Depósitos</a></li>
         <li routerLinkActive="active"><a routerLink="pulseiras">Pulseiras</a></li>
+        <li routerLinkActive="active"><a routerLink="mapa">Mapa</a>
+        </li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">

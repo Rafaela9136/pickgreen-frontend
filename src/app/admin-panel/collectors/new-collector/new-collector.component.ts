@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { DialogComponent, DialogService } from 'ng2-bootstrap-modal';
-import { Collector } from '../collector.model';
+import { Collector } from '../../../_models/collector.model';
 
 export interface NewCollectorModel {
   title: string;
