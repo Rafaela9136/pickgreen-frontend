@@ -90,7 +90,8 @@ export class DepositoComponent implements OnInit {
 
     const colectorName = this.currentUser.name.toLowerCase();
 
-    if (colectorName.indexOf('farmácia') !== -1 || colectorName.indexOf('farmacia') !== -1 || colectorName.indexOf('drogaria') !== -1) {
+    if (colectorName.indexOf('farmácia') !== -1 || colectorName.indexOf('farmacia') !== -1 ||
+    colectorName.indexOf('drogaria') !== -1 || colectorName.indexOf('empresa') !== -1) {
       this.isPharmacy = true;
     }
 
